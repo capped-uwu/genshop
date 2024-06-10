@@ -39,6 +39,17 @@
         .product button:hover {
             background-color: #0056b3;
         }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -47,13 +58,24 @@
             <h1>genshop</h1>
             <p>商品名: gen kit</p>
             <p>価格: 150ダイヤブロック</p>
-            <button onclick="redirectToEmail()">購入</button>
+            <button onclick="showPopup()">購入</button>
         </div>
     </div>
 
+    <div id="popup">
+        <p id="popup-text">購入処理中...</p>
+    </div>
+
     <script>
-        function redirectToEmail() {
-            window.location.href = "email.html";
+        function showPopup() {
+            const popup = document.getElementById('popup');
+            const popupText = document.getElementById('popup-text');
+            popup.style.display = 'block';
+            popupText.textContent = '購入処理中...';
+
+            setTimeout(() => {
+                popupText.textContent = '完了！';
+            }, 3000);
         }
     </script>
 </body>
